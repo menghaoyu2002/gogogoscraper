@@ -9,7 +9,7 @@ import (
 )
 
 type Anime struct {
-	ShowName string
+	showName string
 	episodeNumber int
 }
 
@@ -24,7 +24,7 @@ func Scrape(anime Anime) {
 }
 
 func (anime Anime) FormatAnimeInfo() string {
-	formattedShowName := strings.ReplaceAll(strings.ToLower(anime.ShowName), " ", "-")
+	formattedShowName := strings.ReplaceAll(strings.ToLower(anime.showName), " ", "-")
 	formattedEpisodeName := "episode-" + strconv.Itoa(anime.episodeNumber)
 	return formattedShowName + "-" + formattedEpisodeName
 }
