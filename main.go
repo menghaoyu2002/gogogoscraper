@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	"log"
 	"net/http"
 	"strconv"
@@ -30,8 +31,8 @@ func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	}
 
 	animeURL = "https:" + animeURL
-	fmt.Fprint(rw, "<iframe width=\"100%\" height=\"100%\" frameBorder=\"0\"src=\"" + animeURL + "\" type=\"video/mp4\"></iframe>")
-
+	tmpl, _ := template.ParseFiles("./static/player.html")
+	tmpl.Execute(rw, animeURL)
 }
 
 func main () { 
