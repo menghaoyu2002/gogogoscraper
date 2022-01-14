@@ -1,7 +1,7 @@
 # gogogoscraper
-scraper api for gogoanime, written in go.
+scraper for gogoanime, written in go.
 
-GoGoGoGoGoGoGoGoGo and never stop Going.
+Go Go Go and never stop Going.
 
 It's like a match made in heaven.
 
