@@ -1,6 +1,46 @@
-package main 
+package main
 
-func main () {
-	anime := Anime{"Kimi no Na wa", 1}
-	Scrape(anime)
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"strconv"
+
+	"github.com/julienschmidt/httprouter"
+)
+
+func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	showName := p.ByName("name")
+	episodeNumber, err := strconv.Atoi(p.ByName("episode"))
+
+	if err != nil {
+		rw.WriteHeader(http.StatusBadRequest)
+		fmt.Fprint(rw, "Invalid Episode Number")
+		return 
+	}
+
+	res := make(chan string, 10)
+	Scrape(Anime{showName, episodeNumber }, res)
+	animeURL := <- res
+
+	if animeURL == "" {
+		rw.WriteHeader(http.StatusBadRequest)
+		fmt.Fprint(rw, "Error: Anime not found. Check that the name of the show and episode number are both valid")
+		return 
+	}
+
+	animeURL = "https:" + animeURL
+	fmt.Fprint(rw, "<iframe width=\"100%\" height=\"100%\" frameBorder=\"0\"src=\"" + animeURL + "\" type=\"video/mp4\"></iframe>")
+
+}
+
+func main () { 
+	router := httprouter.New()
+	router.GET("/", func(rw http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		fmt.Fprint(rw, "<h1>Home</h1>")
+	})
+	router.GET("/watch/:name/:episode", HandleWatch)
+
+	fmt.Println("Listening on http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", router))
 }

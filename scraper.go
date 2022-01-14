@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 
@@ -13,13 +12,15 @@ type Anime struct {
 	episodeNumber int
 }
 
-func Scrape(anime Anime) {
+func Scrape(anime Anime, res chan string) {
 	url := "https://www3.gogoanime.cm/" + anime.FormatAnimeInfo()
-	fmt.Println(url)
 	c := colly.NewCollector()
 	c.OnHTML("a[data-video]", func (e *colly.HTMLElement) {
-		fmt.Println(e.Attr("data-video"))
+		res <- e.Attr("data-video")
 	})
+	c.OnScraped(func(r *colly.Response) {
+		res <- ""  // send an empty string to signify that no results were found
+	}) 
 	c.Visit(url)
 }
 
