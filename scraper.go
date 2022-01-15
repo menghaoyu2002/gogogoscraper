@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"strconv"
 	"strings"
 
@@ -20,6 +21,7 @@ func Scrape(anime Anime, res chan string) {
 	})
 	c.OnScraped(func(r *colly.Response) {
 		res <- ""  // send an empty string to signify that no results were found
+		fmt.Println("SCRAPED: " + url)
 	}) 
 	c.Visit(url)
 }
