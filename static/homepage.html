@@ -37,6 +37,7 @@
                     />
                     <input type="submit" value="GO!" />
                 </form>
+                <h4>{{.}}</h4>
             </center>
 
             <script>
@@ -47,7 +48,11 @@
                     const episodeNumber =
                         document.forms['anime-search']['episode-number'].value;
                     console.log(`/watch/${showName}/${episodeNumber}`);
-                    window.location.href = `/watch/${showName}/${episodeNumber}`;
+                    if (showName === '' || episodeNumber === '') {
+                        window.location.href = `/watch/`;
+                    } else {
+                        window.location.href = `/watch/${showName}/${episodeNumber}`;
+                    }
                 }
             </script>
         </div>

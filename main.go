@@ -16,7 +16,8 @@ func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	if err != nil {
 		rw.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(rw, "Invalid Episode Number")
+		tmpl, _ := template.ParseFiles("./static/homepage.html")
+		tmpl.Execute(rw, "Error: Invalid Episode Number")
 		return 
 	}
 
@@ -26,7 +27,8 @@ func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 	if animeURL == "" {
 		rw.WriteHeader(http.StatusBadRequest)
-		fmt.Fprint(rw, "Error: Anime not found. Check that the name of the show and episode number are both valid")
+		tmpl, _ := template.ParseFiles("./static/homepage.html")
+		tmpl.Execute(rw, "Error: Anime not found. Check that the name of the show and episode number are both valid")
 		return 
 	}
 
@@ -38,10 +40,19 @@ func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 func main () { 
 	router := httprouter.New()
 	router.ServeFiles("/styles/*filepath", http.Dir("./static/styles"))
+
 	router.GET("/", func(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
-		http.ServeFile(rw, r, "./static/homepage.html")
+		tmpl, _ := template.ParseFiles("./static/homepage.html")
+		tmpl.Execute(rw, "")
 	})
+
 	router.GET("/watch/:name/:episode", HandleWatch)
+
+	router.GET("/watch/", func(rw http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+		rw.WriteHeader(http.StatusBadRequest)
+		tmpl, _ := template.ParseFiles("./static/homepage.html")
+		tmpl.Execute(rw, "Error: Please Enter BOTH a show name and episode number")
+	})
 
 	fmt.Println("Listening on http://localhost:8080")
 	log.Fatal(http.ListenAndServe(":8080", router))

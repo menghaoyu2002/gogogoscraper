@@ -1,11 +1,18 @@
 h1 {
     font-family: 'Spartan', sans-serif;
     font-size: 12vw;
+    color: white;
+}
+
+h4 {
+    font-family: 'Spartan', sans-serif;
+    color: rgb(224, 47, 47);
 }
 
 body,
 html {
     height: 85%;
+    background-color: rgb(15, 15, 15);
 }
 .container {
     display: flex;
