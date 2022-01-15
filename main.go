@@ -55,6 +55,6 @@ func main () {
 		tmpl.Execute(rw, "Error: Please Enter BOTH a show name and episode number")
 	})
 
-	fmt.Println("Listening on http://localhost:8080")
+	log.Println("Listening on " + os.Getenv("PORT"))
 	log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), router))
 }
