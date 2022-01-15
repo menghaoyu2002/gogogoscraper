@@ -9,6 +9,28 @@ h4 {
     color: rgb(224, 47, 47);
 }
 
+input[type='submit'] {
+    font-family: 'Spartan', sans-serif;
+    font-weight: bold;
+    background-color: aqua;
+    border-radius: 0 10px 10px 0;
+    border-style: solid;
+    border-color: whitesmoke;
+    padding: 8px 15px;
+}
+
+input[type='text'],
+input[type='number'] {
+    width: 25vw;
+    padding: 10px;
+    border-style: hidden;
+    font-family: 'Spartan', sans-serif;
+}
+
+input[type='text'] {
+    border-radius: 10px 0 0 10px;
+}
+
 body,
 html {
     height: 85%;
