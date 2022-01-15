@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -55,6 +54,6 @@ func main () {
 		tmpl.Execute(rw, "Error: Please Enter BOTH a show name and episode number")
 	})
 
-	log.Println("Listening on " + os.Getenv("PORT"))
+	log.Println("Listening on PORT " + os.Getenv("PORT"))
 	log.Fatal(http.ListenAndServe(":" + os.Getenv("PORT"), router))
 }
