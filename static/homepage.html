@@ -47,11 +47,12 @@
             <script>
                 function onSearch(event) {
                     event.preventDefault();
+
                     const showName =
                         document.forms['anime-search']['show-name'].value;
                     const episodeNumber =
                         document.forms['anime-search']['episode-number'].value;
-                    console.log(`/watch/${showName}/${episodeNumber}`);
+
                     if (showName === '' || episodeNumber === '') {
                         window.location.href = `/watch/`;
                     } else {
