@@ -37,8 +37,9 @@ func HandleWatch(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
 
 func main () { 
 	router := httprouter.New()
-	router.GET("/", func(rw http.ResponseWriter, r *http.Request, _ httprouter.Params) {
-		fmt.Fprint(rw, "<h1>Home</h1>")
+	router.ServeFiles("/styles/*filepath", http.Dir("./static/styles"))
+	router.GET("/", func(rw http.ResponseWriter, r *http.Request, p httprouter.Params) {
+		http.ServeFile(rw, r, "./static/homepage.html")
 	})
 	router.GET("/watch/:name/:episode", HandleWatch)
 

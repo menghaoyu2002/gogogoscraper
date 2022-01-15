@@ -3,9 +3,9 @@ h1 {
     font-size: 12vw;
 }
 
-body, html  {
+body,
+html {
     height: 85%;
-    background-color: azure;
 }
 .container {
     display: flex;

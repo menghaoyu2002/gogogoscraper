@@ -12,17 +12,44 @@
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
         </style>
-        <link rel="stylesheet" href="./styles/homepage.css" />
+        <link rel="stylesheet" href="/styles/homepage.css" />
     </head>
     <body>
         <div class="container">
             <center>
                 <h1>GO GO GO!</h1>
-                <form>
-                    <input type="text" placeholder="Search for an Anime" />
-                    <input type="submit" ></button>
+                <form
+                    name="anime-search"
+                    onsubmit="onSearch(event)"
+                    method="GET"
+                >
+                    <input
+                        type="text"
+                        name="show-name"
+                        placeholder="Search for an Anime"
+                        value=""
+                    />
+                    <input
+                        type="text"
+                        name="episode-number"
+                        placeholder="Enter the Episode Number"
+                        value=""
+                    />
+                    <input type="submit" value="GO!" />
                 </form>
             </center>
+
+            <script>
+                function onSearch(event) {
+                    event.preventDefault();
+                    const showName =
+                        document.forms['anime-search']['show-name'].value;
+                    const episodeNumber =
+                        document.forms['anime-search']['episode-number'].value;
+                    console.log(`/watch/${showName}/${episodeNumber}`);
+                    window.location.href = `/watch/${showName}/${episodeNumber}`;
+                }
+            </script>
         </div>
     </body>
 </html>
