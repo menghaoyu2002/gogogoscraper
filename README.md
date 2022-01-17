@@ -12,3 +12,5 @@ Honestly this project is kinda worthless bc you can just mess around with URL's 
 Deployed on Heroku at https://gogogoscraper.herokuapp.com/
 
 Please give my server some time to wake up, he's just tired.
+
+Sometimes you have to use the japanense name to search for the show, rather than the english.
