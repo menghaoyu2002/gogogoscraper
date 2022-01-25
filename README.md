@@ -21,4 +21,4 @@ You can run this program on your own computer with go installed using the comman
 #### Possible improvements
 - find the actual video file (mp4) to use
 - make the fullscreen button on the video player trigger fullscreen in browser.
-- make english names work for most animes and suggest shows based on the exact behavior of the gogoanime website.
+- make english names work for animes with japanese names and suggest shows based on the exact behavior of the gogoanime website.
