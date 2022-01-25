@@ -17,3 +17,8 @@ WARNING: there may be some adds on the video player because of the video source.
 Sometimes you have to use the japanense name to search for the show, rather than the english.
 
 You can run this program on your own computer with go installed using the command `go run .` or you can build it by using `go build` and then run the executable `./gogogoscraper`.
+
+#### Possible improvements
+- find the actual video file (mp4) to use
+- make the fullscreen button on the video player trigger fullscreen in browser.
+- make english names work and suggest shows based on the exact behavior of the gogoanime website.
