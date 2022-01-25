@@ -14,3 +14,5 @@ Deployed on Heroku at https://gogogoscraper.herokuapp.com/
 Please give my server some time to wake up, he's just tired.
 
 Sometimes you have to use the japanense name to search for the show, rather than the english.
+
+You can run this program on your own computer with go installed using the command `go run .` or you can build it by using `go build` and then run the executable `./gogogoscraper`.
