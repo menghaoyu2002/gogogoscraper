@@ -13,7 +13,7 @@ Deployed on Heroku at https://gogogoscraper.herokuapp.com/
 
 Please give my server some time to wake up, he's just tired.
 
-WARNING: there may be some ads and popups on the video player because of the video source. I did not put the ad there, it's attached to the video source. Please ignore these the best that you can, and close them.
+WARNING: there may be some ads and popups (sometimes NSFW) on the video player because of the video source. I did not put the ad there, it's attached to the video source. Please ignore these the best that you can, and close them.
 
 Sometimes you have to use the japanense name to search for the show, rather than the english.
 
